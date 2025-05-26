@@ -1,0 +1,23 @@
+---
+# tasks file for roles/webcontent
+- name: Create a directory for development content
+  file:
+    path: /var/www/devdirectory
+    state: directory
+    mode: '02775'
+
+- name: Create index.html file
+  copy:
+    content: "Development\n"
+    dest: /var/www/devdirectory/index.html
+
+- name: Create symbolic link to Apache directory
+  file:
+    src: /var/www/devdirectory
+    dest: /var/www/html/devdirectory
+    state: link
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted

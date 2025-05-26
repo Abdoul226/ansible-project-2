@@ -1,0 +1,28 @@
+---
+# tasks file for roles/apache
+- name: Install apache2 and ufw
+  apt:
+    name:
+      - apache2
+      - ufw
+    state: present
+    update_cache: yes
+- name: Start and enable apache2
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+- name: Ensure UFW is enabled
+  ufw:
+    state: enabled
+- name: Allow HTTP through UFW
+  ufw:
+    rule: allow
+    port: '80'
+    proto: tcp
+- name: Deploy custom index.html from template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: restart_apache
+

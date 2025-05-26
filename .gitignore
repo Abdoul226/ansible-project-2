@@ -1,0 +1,1 @@
+*.retry\n*.log\n*.swp\n.vagrant/\n__pycache__/\n*.pyc\n*.bak\ninventory.backup

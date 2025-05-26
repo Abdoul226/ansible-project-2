@@ -1,0 +1,6 @@
+---
+- name: Install PHP and MariaDB
+  hosts: test
+  become: yes
+  roles:
+    - lamp

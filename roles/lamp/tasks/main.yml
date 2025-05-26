@@ -1,0 +1,13 @@
+---
+# tasks file for roles/lamp
+- name: Install PHP and MariaDB
+  apt:
+    name:
+      - php
+      - mariadb-server
+    state: present
+    update_cache: yes
+- name: Update all system packages
+  apt:
+    upgrade: dist
+    update_cache: yes

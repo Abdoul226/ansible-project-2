@@ -1,0 +1,6 @@
+---
+- name: Manage Web Content
+  hosts: dev
+  become: yes
+  roles:
+    - webcontent
